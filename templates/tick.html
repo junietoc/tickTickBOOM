@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block head %}
+<script>
+    False = false
+    True = true
+    expired ={{tickInfo.expired}}
+
+    var countDownDate = new Date({{tickInfo.year}},{{tickInfo.month}}-1,{{tickInfo.day}}).getTime();
+    var updater = function() {
+    var now = new Date().getTime();
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Output the result in an element with id="countdown"
+      var countdownString = ""
+      if (days > 0){
+        countdownString += days + " days, ";
+      }
+      if (hours > 0){
+        countdownString += hours + " hours, "
+      }
+      if (minutes > 0){
+        countdownString += minutes + " minutes and "
+      }
+      countdownString += seconds + " seconds";
+      if(!expired){
+      document.getElementById("countdown").innerHTML = countdownString;
+    }
+    }
+
+
+    var x = setInterval(function() {
+    var now = new Date().getTime();
+      // Find the distance between now and the count down date
+      var distance = countDownDate - now;
+
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Output the result in an element with id="countdown"
+      var countdownString = ""
+      if (days > 0){
+        countdownString += days + " days, ";
+      }
+      if (hours > 0){
+        countdownString += hours + " hours, "
+      }
+      if (minutes > 0){
+        countdownString += minutes + " minutes and "
+      }
+      countdownString += seconds + " seconds";
+      if(!expired){
+      document.getElementById("countdown").innerHTML = countdownString;
+    }
+    }, 1000);
+
+    </script>
+<title>{% block title %}tick{% endblock %}</title>
+{% endblock %}
+{% block body%}
+<div class="container flex">
+    <div class="row"  style="margin: 30px">
+        <div class="col-sm-12">
+        <div class="card my-auto">
+
+<div class="card-body text-center">
+
+    <h4 class="card-title display-4">{{ tickInfo.title }}</h4>
+
+{% if tickInfo.expired %}
+    <h1>BOOM!</h1>
+    this tick already exploded
+    {% else %}
+    <h3><span id="countdown"></span></h3>
+    <h2>to go!{% endif %}</h2>
+</div>
+</div>
+</div>
+    </div>
+</div>
+{% endblock %}

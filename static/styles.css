@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap');
+
+body{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(68,68,68,1) 49%, rgba(143,143,143,1) 100%);
+    font-family: 'Fuzzy Bubbles', cursive;
+}
+

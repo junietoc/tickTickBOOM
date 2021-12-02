@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block head %}
+
+<title>{% block title %}create tick{% endblock %}</title>
+{% endblock %}
+{% block body%}
+<div class="container flex">
+    <div class="row"  style="margin: 30px">
+        <div class="col-sm-12">
+        <div class="card my-auto">
+
+<div class="card-body">
+    <h4 class="card-title display-4">create tick</h4>
+  <form method="POST" style="font-size: 1.6em">
+ {{ tickForm.hidden_tag() }}
+    {{ tickForm.tickTitle.label }} {{ tickForm.tickTitle() }}
+    {{ tickForm.tickDate.label }} {{ tickForm.tickDate(min=tomorrow)}}
+ {{ tickForm.submit(class="btn btn-primary") }}
+</form>
+
+</div>
+</div>
+</div>
+    </div>
+</div>
+{% endblock %}
